@@ -1,6 +1,12 @@
+import { filterChange } from "../reducers/filterReducer";
+import { useDispatch } from "react-redux";
+
 const VisibilityFilter = (props) => {
+  const dispatch = useDispatch();
+
   const filterSelected = (value) => {
     console.log(value);
+    dispatch(filterChange(value));
   };
 
   return (
