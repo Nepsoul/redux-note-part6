@@ -36,8 +36,19 @@ const noteSlice = createSlice({
       };
       return state.map((note) => (note.id !== id ? note : changedNote));
     },
+
+    appendNote(state, action) {
+      console.log(action.payload, "appendnote");
+      action.push(action.payload);
+    },
+
+    setNotes(state, action) {
+      console.log(action.payload, "setnote");
+      return action.payload;
+    },
   },
 });
 
-export const { createNote, toggleImportanceOf } = noteSlice.actions;
+export const { createNote, toggleImportanceOf, appendNote, setNotes } =
+  noteSlice.actions;
 export default noteSlice.reducer;
