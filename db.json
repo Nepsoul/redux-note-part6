@@ -11,19 +11,9 @@
       "id": 2
     },
     {
-      "content": "this is from redux note",
+      "content": "using connect state to create note",
       "important": false,
-      "id": 3
-    },
-    {
-      "content": "this note from backend server",
-      "important": false,
-      "id": 4
-    },
-    {
-      "content": "this note from thunk",
-      "important": false,
-      "id": 5
+      "id": 9
     }
   ]
 }

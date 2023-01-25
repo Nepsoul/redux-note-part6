@@ -1,27 +1,23 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { toggleImportanceOf } from "../reducers/noteReducer";
 
-const Notes = () => {
+const Notes = (props) => {
   const dispatch = useDispatch();
-  //const notes = useSelector((state) => state.notes);
 
-  const notes = useSelector((state) => {
-    if (state.filter === "ALL") {
-      return state.notes;
+  const notesToShow = () => {
+    if (props.filter === "ALL") {
+      return props.notes;
     }
-    return state.filter === "IMPORTANT"
-      ? state.notes.filter((note) => note.important)
-      : state.notes.filter((note) => !note.important);
-  });
-
-  const toggleImportance = (id) => {
-    dispatch(toggleImportanceOf(id));
+    return props.filter === "IMPORTANT"
+      ? props.notes.filter((note) => note.important)
+      : props.notes.filter((note) => !note.important);
   };
 
   return (
     <ul>
-      {notes.map((note) => (
-        <li key={note.id} onClick={() => toggleImportance(note.id)}>
+      {notesToShow().map((note) => (
+        <li key={note.id} onClick={() => dispatch(toggleImportanceOf(note.id))}>
           {note.content}
           <strong> {note.important ? "important" : ""}</strong>
         </li>
@@ -30,4 +26,12 @@ const Notes = () => {
   );
 };
 
-export default Notes;
+const mapStateToProps = (state) => {
+  return {
+    notes: state.notes,
+    filter: state.filter,
+  };
+};
+
+const ConnectedNotes = connect(mapStateToProps)(Notes);
+export default ConnectedNotes;
