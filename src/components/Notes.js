@@ -1,14 +1,11 @@
-import { useDispatch } from "react-redux";
 import { connect } from "react-redux";
 import { toggleImportanceOf } from "../reducers/noteReducer";
 
 const Notes = (props) => {
-  const dispatch = useDispatch();
-
   return (
     <ul>
       {props.notes.map((note) => (
-        <li key={note.id} onClick={() => dispatch(toggleImportanceOf(note.id))}>
+        <li key={note.id} onClick={() => props.toggleImportanceOf(note.id)}>
           {note.content}
           <strong> {note.important ? "important" : ""}</strong>
         </li>
@@ -29,5 +26,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ConnectedNotes = connect(mapStateToProps)(Notes);
+const mapDispatchToProps = {
+  toggleImportanceOf,
+};
+
+const ConnectedNotes = connect(mapStateToProps, mapDispatchToProps)(Notes);
 export default ConnectedNotes;

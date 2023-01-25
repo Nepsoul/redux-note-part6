@@ -19,6 +19,16 @@
       "content": "correctly filtered notes ",
       "important": false,
       "id": 10
+    },
+    {
+      "content": "using connect dispatch to create note",
+      "important": false,
+      "id": 11
+    },
+    {
+      "content": "creating note using connect",
+      "important": false,
+      "id": 12
     }
   ]
 }
