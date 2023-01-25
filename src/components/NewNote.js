@@ -3,6 +3,9 @@ import { createNote } from "../reducers/noteReducer";
 //import noteServervice from "../services/notes";
 
 const NewNote = (props) => {
+  console.log(createNote, "createnote");
+  console.log(props.createNote, "withpropcreate");
+
   const addNote = (event) => {
     event.preventDefault();
     const content = event.target.note.value;
@@ -26,4 +29,12 @@ const NewNote = (props) => {
   );
 };
 
-export default connect(null, { createNote })(NewNote);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    createNote: (value) => {
+      dispatch(createNote(value));
+    },
+  };
+};
+
+export default connect(null, mapDispatchToProps)(NewNote);
