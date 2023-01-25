@@ -14,6 +14,11 @@
       "content": "using connect state to create note",
       "important": false,
       "id": 9
+    },
+    {
+      "content": "correctly filtered notes ",
+      "important": false,
+      "id": 10
     }
   ]
 }
